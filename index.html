@@ -6,7 +6,7 @@
   <title>ChronoChroma</title>
   <link rel="preconnect" href="https://fonts.googleapis.com" />
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Montserrat:wght@300;400&display=swap" rel="stylesheet" />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo+Black&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300&family=Montserrat:wght@300;400&display=swap" rel="stylesheet" />
   <style>
     *, *::before, *::after {
       box-sizing: border-box;
@@ -42,33 +42,26 @@
     }
 
     .logo {
-      font-family: 'Cormorant Garamond', serif;
+      font-family: 'Archivo Black', sans-serif;
       font-size: 1.5rem;
-      font-weight: 300;
-      letter-spacing: 0.25em;
+      font-weight: 400;
+      letter-spacing: 0.05em;
       text-transform: uppercase;
-      color: #d4c9b0;
       text-decoration: none;
     }
 
-    nav {
-      display: flex;
-      gap: 2.5rem;
+    .logo .chrono {
+      color: #ffffff;
     }
 
-    nav a {
-      font-size: 0.65rem;
-      font-weight: 300;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
-      color: rgba(212, 201, 176, 0.5);
-      text-decoration: none;
-      transition: color 0.3s ease;
+    .logo .chroma {
+      background: linear-gradient(90deg, #ff0080, #ff8c00, #ffe600, #00e676, #00b0ff, #b400ff);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      filter: drop-shadow(0 0 8px rgba(180, 100, 255, 0.4)) drop-shadow(0 0 18px rgba(0, 176, 255, 0.2));
     }
 
-    nav a:hover {
-      color: #d4c9b0;
-    }
 
     main {
       display: flex;
@@ -77,32 +70,7 @@
       padding: 5rem 4rem 4rem;
     }
 
-    .eyebrow {
-      font-size: 0.6rem;
-      font-weight: 400;
-      letter-spacing: 0.35em;
-      text-transform: uppercase;
-      color: rgba(212, 201, 176, 0.4);
-      margin-bottom: 1.2rem;
-    }
-
-    .reel-title {
-      font-family: 'Cormorant Garamond', serif;
-      font-size: clamp(2.8rem, 6vw, 5rem);
-      font-weight: 300;
-      letter-spacing: 0.06em;
-      color: #d4c9b0;
-      margin-bottom: 3.5rem;
-      text-align: center;
-      line-height: 1.1;
-    }
-
-    .reel-title em {
-      font-style: italic;
-      color: rgba(212, 201, 176, 0.6);
-    }
-
-    .video-container {
+.video-container {
       width: 100%;
       max-width: 1100px;
       position: relative;
@@ -197,18 +165,10 @@
 <body>
 
   <header>
-    <a class="logo" href="#">ChronoChroma</a>
-    <nav>
-      <a href="#">Work</a>
-      <a href="#">About</a>
-      <a href="#">Contact</a>
-    </nav>
+    <a class="logo" href="#"><span class="chrono">Chrono</span><span class="chroma">Chroma</span></a>
   </header>
 
   <main>
-    <p class="eyebrow">Director &mdash; 2024</p>
-    <h1 class="reel-title">Showreel <em>&amp; Selected Works</em></h1>
-
     <div class="video-container">
       <div class="video-wrapper">
         <iframe
