@@ -18,7 +18,7 @@
       width: 100%;
       min-height: 100%;
       background: #080808;
-      color: #d4c9b0;
+      color: #3a3a3a;
       font-family: 'Montserrat', sans-serif;
     }
 
@@ -35,10 +35,11 @@
 
     header {
       display: flex;
-      align-items: center;
-      justify-content: space-between;
+      flex-direction: column;
+      align-items: flex-start;
       padding: 2.4rem 4rem;
-      border-bottom: 1px solid rgba(212, 201, 176, 0.1);
+      border-bottom: 1px solid #3a3a3a;
+      gap: 0.4rem;
     }
 
     .logo {
@@ -48,6 +49,7 @@
       letter-spacing: -0.03em;
       text-transform: uppercase;
       text-decoration: none;
+      color: #3a3a3a;
     }
 
     .logo .chrono {
@@ -58,6 +60,14 @@
       color: #3a3a3a;
     }
 
+    .tagline {
+      font-family: 'Montserrat', sans-serif;
+      font-size: 0.6rem;
+      font-weight: 300;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: #3a3a3a;
+    }
 
     main {
       display: flex;
@@ -66,18 +76,18 @@
       padding: 5rem 4rem 4rem;
     }
 
-.video-container {
+    .video-container {
       width: 100%;
       max-width: 1100px;
       position: relative;
     }
 
-    /* Thin amber border lines */
     .video-container::before,
     .video-container::after {
       content: '';
       position: absolute;
-      background: rgba(212, 201, 176, 0.2);
+      background: #3a3a3a;
+      opacity: 0.3;
     }
 
     .video-container::before {
@@ -118,14 +128,15 @@
     .meta-line {
       flex: 1;
       height: 1px;
-      background: rgba(212, 201, 176, 0.08);
+      background: #3a3a3a;
+      opacity: 0.2;
     }
 
     .meta-text {
       font-size: 0.6rem;
       letter-spacing: 0.25em;
       text-transform: uppercase;
-      color: rgba(212, 201, 176, 0.3);
+      color: #3a3a3a;
       white-space: nowrap;
     }
 
@@ -135,25 +146,19 @@
       font-size: 0.58rem;
       letter-spacing: 0.2em;
       text-transform: uppercase;
-      color: rgba(212, 201, 176, 0.2);
-      border-top: 1px solid rgba(212, 201, 176, 0.06);
+      color: #3a3a3a;
+      border-top: 1px solid #3a3a3a;
+      opacity: 0.5;
       margin-top: 4rem;
     }
 
     @media (max-width: 640px) {
       header {
         padding: 1.8rem 1.5rem;
-        flex-direction: column;
-        gap: 1.5rem;
-        align-items: flex-start;
       }
 
       main {
         padding: 3rem 1.5rem 2rem;
-      }
-
-      nav {
-        gap: 1.5rem;
       }
     }
   </style>
@@ -162,6 +167,7 @@
 
   <header>
     <a class="logo" href="#"><span class="chrono">Chrono</span><span class="chroma">Chroma</span></a>
+    <p class="tagline">Story Driven. Ai Generated.</p>
   </header>
 
   <main>
