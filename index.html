@@ -118,8 +118,8 @@
     /* Hero statement */
     .hero {
       display: grid;
-      grid-template-columns: 1fr auto;
-      align-items: end;
+      grid-template-columns: auto 1fr;
+      align-items: stretch;
       gap: clamp(2rem, 6vw, 6rem);
       padding: clamp(6rem, 10vw, 9rem) var(--gutter) clamp(2rem, 5vw, 4rem);
     }
@@ -158,37 +158,29 @@
       -webkit-text-stroke: 0.018em var(--text);
     }
 
-    .hero h1 {
-      order: 2;
-    }
-
     .hero .copy {
-      order: 1;
-      justify-self: start;
-      position: relative;
-      padding-top: 1.1em;
-      font-size: clamp(1rem, 1.7vw, 1.8rem);
+      justify-self: end;
+      display: flex;
+      flex-direction: column;
+      justify-content: space-between;
+      gap: 0.5em;
+      font-size: clamp(0.9rem, 1.45vw, 1.6rem);
       font-weight: 300;
-      line-height: 1.35;
+      line-height: 1.3;
       letter-spacing: -0.01em;
-      max-width: 24em;
       color: #8a8a8a;
-      opacity: 0;
-      animation: fade 1s ease 0.5s forwards;
     }
 
-    .hero .copy::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: 1px;
-      background: var(--text);
-      transform: scaleX(0);
-      transform-origin: left;
-      animation: draw 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) 0.35s forwards;
+    .hero .copy span {
+      display: block;
+      opacity: 0;
+      transform: translateY(14px);
+      animation: rise-fade 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
     }
+
+    .hero .copy span:nth-child(1) { animation-delay: 0.35s; }
+    .hero .copy span:nth-child(2) { margin-left: 2em; animation-delay: 0.47s; }
+    .hero .copy span:nth-child(3) { margin-left: 4em; animation-delay: 0.59s; }
 
     .hero .copy em {
       font-style: normal;
@@ -197,8 +189,7 @@
     }
 
     @keyframes rise { to { transform: none; } }
-    @keyframes fade { to { opacity: 1; } }
-    @keyframes draw { to { transform: scaleX(1); } }
+    @keyframes rise-fade { to { opacity: 1; transform: none; } }
 
     /* Work */
     .work {
@@ -287,8 +278,7 @@
       html { scroll-behavior: auto; }
       .reveal { opacity: 1; transform: none; transition: none; }
       .hero .line > span,
-      .hero .copy,
-      .hero .copy::before { animation: none; opacity: 1; transform: none; }
+      .hero .copy span { animation: none; opacity: 1; transform: none; }
     }
 
     @media (max-width: 720px) {
@@ -299,12 +289,10 @@
 
       .hero h1 {
         font-size: 12vw;
-        order: 1;
       }
 
-      .hero .copy {
-        order: 2;
-      }
+      .hero .copy span:nth-child(2) { margin-left: 1em; }
+      .hero .copy span:nth-child(3) { margin-left: 2em; }
 
       .hero .line-offset {
         margin-left: 0.5em;
@@ -329,7 +317,11 @@
         <span class="line"><span>Creation</span></span>
         <span class="line line-offset"><span class="outline">Unbound</span></span>
       </h1>
-      <p class="copy">The path to success is often winding. Creating your brand story is no different. <em>We explore all paths</em> to make sure you are on the right one.</p>
+      <p class="copy">
+        <span>The path to success is often winding.</span>
+        <span>Creating your brand story is no different.</span>
+        <span><em>We explore all paths</em> to make sure you are on the right one.</span>
+      </p>
     </section>
 
     <section class="work">
