@@ -118,7 +118,7 @@
     /* Hero statement */
     .hero {
       display: grid;
-      grid-template-columns: auto 1fr;
+      grid-template-columns: 1fr auto;
       align-items: end;
       gap: clamp(2rem, 6vw, 6rem);
       padding: clamp(6rem, 10vw, 9rem) var(--gutter) clamp(2rem, 5vw, 4rem);
@@ -133,13 +133,72 @@
       text-transform: uppercase;
     }
 
-    .hero .copy {
-      font-size: clamp(1rem, 2vw, 2.1rem);
-      font-weight: 300;
-      line-height: 1.3;
-      letter-spacing: -0.01em;
-      max-width: 26em;
+    .hero .line {
+      display: block;
+      overflow: hidden;
+      padding: 0.05em 0.04em 0.05em 0;
     }
+
+    .hero .line > span {
+      display: block;
+      transform: translateY(110%);
+      animation: rise 1s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
+    }
+
+    .hero .line-offset {
+      margin-left: 0.9em;
+    }
+
+    .hero .line-offset > span {
+      animation-delay: 0.12s;
+    }
+
+    .hero .outline {
+      color: transparent;
+      -webkit-text-stroke: 0.018em var(--text);
+    }
+
+    .hero h1 {
+      order: 2;
+    }
+
+    .hero .copy {
+      order: 1;
+      justify-self: start;
+      position: relative;
+      padding-top: 1.1em;
+      font-size: clamp(1rem, 1.7vw, 1.8rem);
+      font-weight: 300;
+      line-height: 1.35;
+      letter-spacing: -0.01em;
+      max-width: 24em;
+      color: #8a8a8a;
+      opacity: 0;
+      animation: fade 1s ease 0.5s forwards;
+    }
+
+    .hero .copy::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 1px;
+      background: var(--text);
+      transform: scaleX(0);
+      transform-origin: left;
+      animation: draw 1.1s cubic-bezier(0.2, 0.7, 0.2, 1) 0.35s forwards;
+    }
+
+    .hero .copy em {
+      font-style: normal;
+      font-weight: 500;
+      color: var(--text);
+    }
+
+    @keyframes rise { to { transform: none; } }
+    @keyframes fade { to { opacity: 1; } }
+    @keyframes draw { to { transform: scaleX(1); } }
 
     /* Work */
     .work {
@@ -227,12 +286,32 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .reveal { opacity: 1; transform: none; transition: none; }
+      .hero .line > span,
+      .hero .copy,
+      .hero .copy::before { animation: none; opacity: 1; transform: none; }
     }
 
     @media (max-width: 720px) {
       .hero {
         grid-template-columns: 1fr;
-        gap: 1.25rem;
+        gap: 1.5rem;
+      }
+
+      .hero h1 {
+        font-size: 12vw;
+        order: 1;
+      }
+
+      .hero .copy {
+        order: 2;
+      }
+
+      .hero .line-offset {
+        margin-left: 0.5em;
+      }
+
+      .hero .copy {
+        justify-self: start;
       }
     }
   </style>
@@ -246,8 +325,11 @@
 
   <main>
     <section class="hero">
-      <h1 class="reveal">Creation<br />Unbound</h1>
-      <p class="copy reveal">The path to success is often winding. Creating your brand story is no different. Here at ChronoChroma we explore all the paths to make sure you are on the right one.</p>
+      <h1>
+        <span class="line"><span>Creation</span></span>
+        <span class="line line-offset"><span class="outline">Unbound</span></span>
+      </h1>
+      <p class="copy">The path to success is often winding. Creating your brand story is no different. <em>We explore all paths</em> to make sure you are on the right one.</p>
     </section>
 
     <section class="work">
