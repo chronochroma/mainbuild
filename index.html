@@ -122,8 +122,26 @@
       transform: scaleX(1);
     }
 
+    .tagline {
+      margin-top: 0.3rem;
+      font-size: 0.62rem;
+      font-weight: 300;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: #fff;
+    }
+
+    nav {
+      display: flex;
+      gap: clamp(1.25rem, 3vw, 2.5rem);
+    }
+
+    #about {
+      scroll-margin-top: 5.5rem;
+    }
+
     main {
-      padding-top: 4.5rem;
+      padding-top: 5.75rem;
     }
 
     /* Work */
@@ -231,8 +249,14 @@
 <body>
 
   <header>
-    <a class="logo" href="#">ChronoChroma</a>
-    <a class="header-link" href="#contact">Contact</a>
+    <div class="brand">
+      <a class="logo" href="#">ChronoChroma</a>
+      <p class="tagline">Creatively Free and Generatively Made</p>
+    </div>
+    <nav>
+      <a class="header-link" href="#about">About</a>
+      <a class="header-link" href="#contact">Contact</a>
+    </nav>
   </header>
 
   <main>
