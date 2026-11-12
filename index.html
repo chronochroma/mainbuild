@@ -26,204 +26,225 @@
       font-style: normal;
       font-display: swap;
     }
-  </style>
-  <style>
+
+    :root {
+      --bg: #080808;
+      --text: #ececec;
+      --muted: #4e4e4e;
+      --line: rgba(236, 236, 236, 0.12);
+      --gutter: clamp(1rem, 4vw, 4rem);
+    }
+
     *, *::before, *::after {
       box-sizing: border-box;
       margin: 0;
       padding: 0;
     }
 
-    html, body {
-      width: 100%;
-      min-height: 100%;
-      background: #080808;
-      color: #4e4e4e;
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      background: var(--bg);
+      color: var(--text);
       font-family: 'Montserrat', sans-serif;
+      font-weight: 300;
+      -webkit-font-smoothing: antialiased;
+      overflow-x: hidden;
     }
 
-    /* Grain overlay */
-    body::before {
-      content: '';
-      position: fixed;
-      inset: 0;
-      background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='1'/%3E%3C/svg%3E");
-      opacity: 0.035;
-      pointer-events: none;
-      z-index: 100;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
+    .label {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.22em;
+      text-transform: uppercase;
+      color: var(--muted);
+    }
+
+    /* Top bar */
     header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      right: 0;
+      z-index: 10;
       display: flex;
-      flex-direction: column;
-      align-items: flex-start;
-      padding: 2.4rem 4rem;
-      border-bottom: 1px solid #4e4e4e;
-      gap: 0.4rem;
+      align-items: center;
+      justify-content: space-between;
+      padding: 1.4rem var(--gutter);
+      mix-blend-mode: difference;
     }
 
     .logo {
       font-family: 'Archivo Black', sans-serif;
-      font-size: 1.5rem;
-      font-weight: 400;
+      font-size: 1.25rem;
       letter-spacing: -0.03em;
       text-transform: uppercase;
-      text-decoration: none;
-      color: #4e4e4e;
+      color: #fff;
     }
 
-    .logo .chrono {
-      color: #4e4e4e;
-    }
-
-    .logo .chroma {
-      color: #4e4e4e;
-    }
-
-    .tagline {
-      font-family: 'Montserrat', sans-serif;
-      font-size: 0.6rem;
+    .header-link {
+      font-size: 0.68rem;
       font-weight: 500;
       letter-spacing: 0.22em;
       text-transform: uppercase;
-      color: #4e4e4e;
-    }
-
-    main {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      padding: 5rem 4rem 4rem;
-    }
-
-    .video-container {
-      width: 100%;
-      max-width: 1100px;
+      color: #fff;
       position: relative;
     }
 
-    .video-container::before,
-    .video-container::after {
+    .header-link::after {
       content: '';
       position: absolute;
-      background: #4e4e4e;
-      opacity: 0.3;
-    }
-
-    .video-container::before {
-      top: -12px;
       left: 0;
       right: 0;
+      bottom: -4px;
       height: 1px;
+      background: currentColor;
+      transform: scaleX(0);
+      transform-origin: left;
+      transition: transform 0.35s ease;
     }
 
-    .video-container::after {
-      bottom: -12px;
-      left: 0;
-      right: 0;
-      height: 1px;
+    .header-link:hover::after {
+      transform: scaleX(1);
     }
 
-    .video-wrapper {
-      width: 100%;
+    /* Hero statement */
+    .hero {
+      min-height: 100svh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 8rem var(--gutter) clamp(2rem, 5vw, 4rem);
+    }
+
+    .hero .label {
+      margin-bottom: clamp(1.5rem, 3vw, 2.5rem);
+    }
+
+    .hero h1 {
+      font-family: 'Archivo Black', sans-serif;
+      font-weight: 400;
+      font-size: clamp(3rem, 13.5vw, 15rem);
+      line-height: 0.86;
+      letter-spacing: -0.045em;
+      text-transform: uppercase;
+    }
+
+    .statement {
+      display: grid;
+      grid-template-columns: 1fr 2fr;
+      gap: 2rem;
+      padding: clamp(3rem, 8vw, 8rem) var(--gutter);
+      border-top: 1px solid var(--line);
+    }
+
+    .statement p.copy {
+      font-size: clamp(1.35rem, 2.9vw, 3rem);
+      font-weight: 300;
+      line-height: 1.25;
+      letter-spacing: -0.015em;
+      max-width: 22em;
+    }
+
+    /* Work */
+    .work {
+      padding-bottom: clamp(3rem, 8vw, 8rem);
+    }
+
+    .work-head {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      padding: 1.5rem var(--gutter) clamp(1rem, 2vw, 1.75rem);
+      border-top: 1px solid var(--line);
+    }
+
+    .work-head h2 {
+      font-family: 'Archivo Black', sans-serif;
+      font-weight: 400;
+      font-size: clamp(2.25rem, 7vw, 7rem);
+      line-height: 0.9;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+    }
+
+    .frame {
+      margin: 0 var(--gutter);
       aspect-ratio: 16 / 9;
+      background: #000;
+      border-radius: clamp(6px, 1vw, 14px);
+      overflow: hidden;
     }
 
-    iframe {
+    .frame video,
+    .frame iframe {
       width: 100%;
       height: 100%;
       border: none;
       display: block;
-    }
-
-    .meta {
-      display: flex;
-      align-items: center;
-      gap: 2rem;
-      margin-top: 2rem;
-      width: 100%;
-      max-width: 1100px;
-    }
-
-    .meta-line {
-      flex: 1;
-      height: 1px;
-      background: #4e4e4e;
-      opacity: 0.2;
-    }
-
-    .meta-text {
-      font-size: 0.6rem;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: #4e4e4e;
-      white-space: nowrap;
-    }
-
-    footer {
-      text-align: center;
-      padding: 3rem 4rem;
-      font-size: 0.6rem;
-      font-weight: 300;
-      letter-spacing: 0.25em;
-      text-transform: uppercase;
-      color: #4e4e4e;
-      border-top: 1px solid rgba(78, 78, 78, 0.5);
-      margin-top: 4rem;
-    }
-
-    .intro-copy {
-      width: 100%;
-      max-width: 1100px;
-      font-size: 0.85rem;
-      font-weight: 300;
-      line-height: 1.8;
-      letter-spacing: 0.03em;
-      color: #4e4e4e;
-      margin-bottom: 3.5rem;
-    }
-
-    .section-header {
-      width: 100%;
-      max-width: 1100px;
-      margin-top: 0;
-      margin-bottom: 2.5rem;
-      display: flex;
-      align-items: center;
-      gap: 1.5rem;
-    }
-
-    .section-header h2 {
-      font-family: 'Archivo Black', sans-serif;
-      font-size: 0.65rem;
-      font-weight: 400;
-      letter-spacing: 0.3em;
-      text-transform: uppercase;
-      color: #4e4e4e;
-      white-space: nowrap;
-    }
-
-    .section-header-line {
-      flex: 1;
-      height: 1px;
-      background: #4e4e4e;
-      opacity: 0.2;
-    }
-
-    .native-video {
-      width: 100%;
-      height: 100%;
-      display: block;
       object-fit: cover;
     }
 
-    @media (max-width: 640px) {
-      header {
-        padding: 1.8rem 1.5rem;
-      }
+    /* Footer */
+    footer {
+      border-top: 1px solid var(--line);
+      padding: clamp(3rem, 7vw, 6rem) var(--gutter) 1.75rem;
+    }
 
-      main {
-        padding: 3rem 1.5rem 2rem;
+    .contact {
+      display: block;
+      font-family: 'Archivo Black', sans-serif;
+      font-size: clamp(1.2rem, 5.9vw, 7.5rem);
+      line-height: 1;
+      letter-spacing: -0.04em;
+      text-transform: uppercase;
+      margin: 1.25rem 0 clamp(3rem, 7vw, 6rem);
+      white-space: nowrap;
+      transition: color 0.3s ease;
+    }
+
+    .contact:hover {
+      color: var(--muted);
+    }
+
+    .footer-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 1rem;
+      flex-wrap: wrap;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--line);
+    }
+
+    /* Scroll reveal */
+    .reveal {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.9s ease, transform 0.9s cubic-bezier(0.2, 0.7, 0.2, 1);
+    }
+
+    .reveal.in {
+      opacity: 1;
+      transform: none;
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      .reveal { opacity: 1; transform: none; transition: none; }
+    }
+
+    @media (max-width: 720px) {
+      .statement {
+        grid-template-columns: 1fr;
+        gap: 1.25rem;
       }
     }
   </style>
@@ -231,54 +252,75 @@
 <body>
 
   <header>
-    <a class="logo" href="#"><span class="chrono">Chrono</span><span class="chroma">Chroma</span></a>
-    <p class="tagline">Creation Unbound</p>
+    <a class="logo" href="#">ChronoChroma</a>
+    <a class="header-link" href="#contact">Contact</a>
   </header>
 
   <main>
-    <p class="intro-copy">The path to success is often winding. Creating your brand story is no different. Here at ChronoChroma we explore all the paths to make sure you are on the right one.</p>
+    <section class="hero">
+      <p class="label reveal">ChronoChroma</p>
+      <h1 class="reveal">Creation<br />Unbound</h1>
+    </section>
 
-    <div class="section-header">
-      <h2>Latest</h2>
-      <div class="section-header-line"></div>
-    </div>
+    <section class="statement">
+      <p class="label reveal">About</p>
+      <p class="copy reveal">The path to success is often winding. Creating your brand story is no different. Here at ChronoChroma we explore all the paths to make sure you are on the right one.</p>
+    </section>
 
-    <div class="video-container">
-      <div class="video-wrapper">
-        <video class="native-video" controls preload="metadata">
+    <section class="work">
+      <div class="work-head reveal">
+        <h2>Latest</h2>
+        <span class="label">01</span>
+      </div>
+      <div class="frame reveal">
+        <video controls playsinline preload="metadata" poster="https://image.mux.com/RAR61mC5imgw5p55i35xOr01t9UKgj225Iq66MvXV18U/thumbnail.jpg">
           <source src="https://stream.mux.com/RAR61mC5imgw5p55i35xOr01t9UKgj225Iq66MvXV18U/720p.mp4" type="video/mp4" />
         </video>
       </div>
-    </div>
+    </section>
 
-    <div class="section-header" style="margin-top:5rem;">
-      <h2>Explore</h2>
-      <div class="section-header-line"></div>
-    </div>
-
-    <div class="video-container">
-      <div class="video-wrapper">
+    <section class="work">
+      <div class="work-head reveal">
+        <h2>Explore</h2>
+        <span class="label">02</span>
+      </div>
+      <div class="frame reveal">
         <iframe
           src="https://www.youtube.com/embed/qNJJxU45P1A?rel=0&modestbranding=1&color=white"
+          title="Explore"
+          loading="lazy"
           allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
           allowfullscreen
         ></iframe>
       </div>
-    </div>
-
-    <div class="meta">
-      <div class="meta-line"></div>
-      <div style="display:flex;flex-direction:column;align-items:center;gap:0.5rem;">
-        <span class="meta-text">ChronoChroma</span>
-        <a href="mailto:info@chronochroma.ai" class="meta-text" style="color:#4e4e4e;text-decoration:none;">info@chronochroma.ai</a>
-      </div>
-      <div class="meta-line"></div>
-    </div>
+    </section>
   </main>
 
-  <footer>
-    &copy; 2026 ChronoChroma &mdash; All Rights Reserved
+  <footer id="contact">
+    <p class="label">Get in touch</p>
+    <a class="contact" href="mailto:info@chronochroma.ai">info@chronochroma.ai</a>
+    <div class="footer-row">
+      <span class="label">&copy; 2026 ChronoChroma</span>
+      <span class="label">All Rights Reserved</span>
+    </div>
   </footer>
+
+  <script>
+    const items = document.querySelectorAll('.reveal');
+    if ('IntersectionObserver' in window) {
+      const io = new IntersectionObserver((entries) => {
+        entries.forEach((e) => {
+          if (e.isIntersecting) {
+            e.target.classList.add('in');
+            io.unobserve(e.target);
+          }
+        });
+      }, { threshold: 0.12 });
+      items.forEach((el) => io.observe(el));
+    } else {
+      items.forEach((el) => el.classList.add('in'));
+    }
+  </script>
 
 </body>
 </html>
