@@ -153,42 +153,7 @@
       animation-delay: 0.12s;
     }
 
-    .hero .outline {
-      color: transparent;
-      -webkit-text-stroke: 0.018em var(--text);
-    }
-
-    .hero .copy {
-      display: flex;
-      flex-direction: column;
-      gap: 0.35em;
-      text-align: center;
-      font-size: clamp(0.9rem, 1.45vw, 1.6rem);
-      font-weight: 300;
-      line-height: 1.3;
-      letter-spacing: -0.01em;
-      color: #8a8a8a;
-    }
-
-    .hero .copy span {
-      display: block;
-      opacity: 0;
-      transform: translateY(14px);
-      animation: rise-fade 0.9s cubic-bezier(0.2, 0.7, 0.2, 1) forwards;
-    }
-
-    .hero .copy span:nth-child(1) { animation-delay: 0.35s; }
-    .hero .copy span:nth-child(2) { animation-delay: 0.47s; }
-    .hero .copy span:nth-child(3) { animation-delay: 0.59s; }
-
-    .hero .copy em {
-      font-style: normal;
-      font-weight: 500;
-      color: var(--text);
-    }
-
     @keyframes rise { to { transform: none; } }
-    @keyframes rise-fade { to { opacity: 1; transform: none; } }
 
     /* Work */
     .work {
@@ -276,8 +241,7 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .reveal { opacity: 1; transform: none; transition: none; }
-      .hero .line > span,
-      .hero .copy span { animation: none; opacity: 1; transform: none; }
+      .hero .line > span { animation: none; transform: none; }
     }
 
     @media (max-width: 720px) {
@@ -312,13 +276,8 @@
     <section class="hero">
       <h1>
         <span class="line"><span>Creation</span></span>
-        <span class="line line-offset"><span class="outline">Unbound</span></span>
+        <span class="line line-offset"><span>Unbound</span></span>
       </h1>
-      <p class="copy">
-        <span>The path to success is often winding.</span>
-        <span>Creating your brand story is no different.</span>
-        <span><em>We explore all paths</em> to make sure you are on the right one.</span>
-      </p>
     </section>
 
     <section class="work">
