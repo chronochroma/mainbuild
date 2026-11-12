@@ -117,6 +117,10 @@
 
     /* Hero statement */
     .hero {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      align-items: end;
+      gap: clamp(2rem, 6vw, 6rem);
       padding: clamp(6rem, 10vw, 9rem) var(--gutter) clamp(2rem, 5vw, 4rem);
     }
 
@@ -129,20 +133,12 @@
       text-transform: uppercase;
     }
 
-    .statement {
-      display: grid;
-      grid-template-columns: 1fr 2fr;
-      gap: 2rem;
-      padding: clamp(3rem, 8vw, 8rem) var(--gutter);
-      border-top: 1px solid var(--line);
-    }
-
-    .statement p.copy {
-      font-size: clamp(1.35rem, 2.9vw, 3rem);
+    .hero .copy {
+      font-size: clamp(1rem, 2vw, 2.1rem);
       font-weight: 300;
-      line-height: 1.25;
-      letter-spacing: -0.015em;
-      max-width: 22em;
+      line-height: 1.3;
+      letter-spacing: -0.01em;
+      max-width: 26em;
     }
 
     /* Work */
@@ -234,7 +230,7 @@
     }
 
     @media (max-width: 720px) {
-      .statement {
+      .hero {
         grid-template-columns: 1fr;
         gap: 1.25rem;
       }
@@ -251,10 +247,6 @@
   <main>
     <section class="hero">
       <h1 class="reveal">Creation<br />Unbound</h1>
-    </section>
-
-    <section class="statement">
-      <h2 class="section-title reveal">About</h2>
       <p class="copy reveal">The path to success is often winding. Creating your brand story is no different. Here at ChronoChroma we explore all the paths to make sure you are on the right one.</p>
     </section>
 
