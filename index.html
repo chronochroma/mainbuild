@@ -136,6 +136,7 @@
       gap: clamp(1.25rem, 3vw, 2.5rem);
     }
 
+    #latest,
     #about {
       scroll-margin-top: 5.5rem;
     }
@@ -240,6 +241,25 @@
       transform: none;
     }
 
+    @media (max-width: 560px) {
+      header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 0.8rem;
+        padding-top: 1.1rem;
+        padding-bottom: 0.9rem;
+      }
+
+      main {
+        padding-top: 7.25rem;
+      }
+
+      #latest,
+      #about {
+        scroll-margin-top: 7rem;
+      }
+    }
+
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       .reveal { opacity: 1; transform: none; transition: none; }
@@ -251,16 +271,17 @@
   <header>
     <div class="brand">
       <a class="logo" href="#">ChronoChroma</a>
-      <p class="tagline">Creatively Free and Generatively Made</p>
+      <p class="tagline">Creatively Free Generatively Made</p>
     </div>
     <nav>
+      <a class="header-link" href="#latest">Latest</a>
       <a class="header-link" href="#about">About</a>
       <a class="header-link" href="#contact">Contact</a>
     </nav>
   </header>
 
   <main>
-    <section class="work">
+    <section class="work" id="latest">
       <div class="work-head reveal">
         <h2 class="section-title">Latest</h2>
       </div>
